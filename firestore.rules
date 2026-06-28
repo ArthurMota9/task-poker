@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /sessions/{sessionId} {
+      // Qualquer usuário autenticado pode ler sessões
+      allow read: if request.auth != null;
+
+      // Criação: usuário autenticado e é o host
+      allow create: if request.auth != null
+        && request.resource.data.hostId == request.auth.uid;
+
+      // Atualização: usuário autenticado e participante da sessão
+      allow update: if request.auth != null
+        && (
+          // Host pode fazer qualquer atualização
+          resource.data.hostId == request.auth.uid
+          ||
+          // Participantes podem votar e atualizar presença
+          request.auth.uid in resource.data.participants
+        );
+    }
+  }
+}
