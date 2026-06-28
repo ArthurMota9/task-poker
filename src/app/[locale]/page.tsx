@@ -34,6 +34,7 @@ export default function HomePage() {
     hostName: '',
     sequence: 'fibonacci' as VotingSequence,
     anyoneCanControl: false,
+    freeMode: false,
   });
 
   const [joinForm, setJoinForm] = useState({
@@ -46,7 +47,7 @@ export default function HomePage() {
     if (!createForm.sessionName.trim() || !createForm.hostName.trim()) return;
     setLoading(true);
     try {
-      const sessionId = await createSession(createForm.sessionName, createForm.hostName, createForm.sequence, createForm.anyoneCanControl);
+      const sessionId = await createSession(createForm.sessionName, createForm.hostName, createForm.sequence, createForm.anyoneCanControl, createForm.freeMode);
       router.push(`/${locale}/session/${sessionId}`);
     } catch (err) {
       console.error(err);
@@ -134,6 +135,16 @@ export default function HomePage() {
                   />
                   <Label htmlFor="anyoneCanControl" className="text-xs font-normal text-muted-foreground cursor-pointer">
                     {t('create.anyoneCanControl')}
+                  </Label>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Switch
+                    id="freeMode"
+                    checked={createForm.freeMode}
+                    onCheckedChange={(checked) => setCreateForm({ ...createForm, freeMode: checked })}
+                  />
+                  <Label htmlFor="freeMode" className="text-xs font-normal text-muted-foreground cursor-pointer">
+                    {t('create.freeMode')}
                   </Label>
                 </div>
 
