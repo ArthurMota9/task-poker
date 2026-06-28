@@ -26,19 +26,8 @@ export default function Icon() {
           <rect x="7" y="5" width="16" height="21" rx="3" fill="#4f46e5" fillOpacity="0.35" />
           {/* Card da frente */}
           <rect x="4" y="3" width="16" height="21" rx="3" fill="#4f46e5" />
-          {/* TP */}
-          <text
-            x="7.5"
-            y="11"
-            fontSize="5"
-            fontWeight="700"
-            fontFamily="monospace"
-            fill="white"
-          >
-            TP
-          </text>
-          {/* Losango */}
-          <path d="M12 16 L14.5 12.5 L17 16 L14.5 19.5 Z" fill="white" fillOpacity="0.9" />
+          {/* Losango central */}
+          <path d="M12 15 L15 10 L18 15 L15 20 Z" fill="white" fillOpacity="0.9" />
         </svg>
       </div>
     ),
