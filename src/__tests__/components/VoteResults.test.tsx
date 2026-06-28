@@ -34,7 +34,16 @@ describe('VoteResults', () => {
     expect(screen.getByText('—')).toBeInTheDocument();
   });
 
-  it('renders participant names with their vote values', () => {
+  it('groups participants with the same vote on one line', () => {
+    const task = makeTask({
+      'user-1': { value: '5', votedAt: 0 },
+      'user-2': { value: '5', votedAt: 0 },
+    });
+    render(<VoteResults task={task} participants={participants} />);
+    expect(screen.getByText('Alice, Bob')).toBeInTheDocument();
+  });
+
+  it('shows each vote group separately when votes differ', () => {
     const task = makeTask({
       'user-1': { value: '5', votedAt: 0 },
       'user-2': { value: '8', votedAt: 0 },
@@ -50,7 +59,6 @@ describe('VoteResults', () => {
       'user-2': { value: '5', votedAt: 0 },
     });
     const { container } = render(<VoteResults task={task} participants={participants} />);
-    // bar at 100% width when all votes are equal
     const bar = container.querySelector('[style*="width: 100%"]');
     expect(bar).toBeInTheDocument();
   });
