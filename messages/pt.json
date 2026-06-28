@@ -10,6 +10,7 @@
       "yourNamePlaceholder": "João Silva",
       "sequence": "Sequência",
       "anyoneCanControl": "Permitir que todos controlem a sessão",
+      "freeMode": "Modo livre (sem cadastro de tarefas)",
       "submit": "Criar sessão",
       "submitting": "Criando..."
     },
@@ -44,6 +45,9 @@
     "chooseEstimate": "Escolha sua estimativa",
     "revealVotes": "Revelar votos",
     "finishTask": "Concluir tarefa",
+    "finishRound": "Concluir rodada",
+    "clearVotes": "Limpar votos",
+    "round": "Rodada #{n}",
     "hostWaiting": "Adicione e selecione uma tarefa para iniciar a votação.",
     "guestWaiting": "Aguardando o host iniciar a votação...",
     "tasks": "Tarefas",

@@ -10,6 +10,7 @@
       "yourNamePlaceholder": "John Smith",
       "sequence": "Sequence",
       "anyoneCanControl": "Allow everyone to control the session",
+      "freeMode": "Free mode (no task registration)",
       "submit": "Create session",
       "submitting": "Creating..."
     },
@@ -44,6 +45,9 @@
     "chooseEstimate": "Choose your estimate",
     "revealVotes": "Reveal votes",
     "finishTask": "Finish task",
+    "finishRound": "Finish round",
+    "clearVotes": "Clear votes",
+    "round": "Round #{n}",
     "hostWaiting": "Add and select a task to start voting.",
     "guestWaiting": "Waiting for the host to start voting...",
     "tasks": "Tasks",
