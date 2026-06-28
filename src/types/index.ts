@@ -28,6 +28,7 @@ export interface Task {
 export interface HistoryEntry {
   id: string;
   title: string;
+  roundNumber?: number;
   average: number;
   votes: Record<string, { name: string; value: string }>;
   completedAt: number;
@@ -40,6 +41,7 @@ export interface Session {
   status: SessionStatus;
   votingSequence: VotingSequence;
   anyoneCanControl: boolean;
+  freeMode: boolean;
   currentTaskId: string | null;
   createdAt: number;
   participants: Record<string, Participant>;

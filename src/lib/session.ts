@@ -25,19 +25,23 @@ export async function createSession(
   hostName: string,
   votingSequence: VotingSequence,
   anyoneCanControl = false,
+  freeMode = false,
 ): Promise<string> {
   const db = getDb();
   const userId = await getOrCreateAnonymousUser();
   const sessionId = nanoid();
 
+  const initialTaskId = freeMode ? nanoid() : null;
+
   await setDoc(doc(db, 'sessions', sessionId), {
     id: sessionId,
     name: sessionName,
     hostId: userId,
-    status: 'waiting',
+    status: freeMode ? 'voting' : 'waiting',
     votingSequence,
     anyoneCanControl,
-    currentTaskId: null,
+    freeMode,
+    currentTaskId: initialTaskId,
     createdAt: Date.now(),
     participants: {
       [userId]: {
@@ -48,7 +52,16 @@ export async function createSession(
         online: true,
       },
     },
-    tasks: {},
+    tasks: freeMode && initialTaskId ? {
+      [initialTaskId]: {
+        id: initialTaskId,
+        title: '',
+        status: 'voting',
+        average: null,
+        votes: {},
+        createdAt: Date.now(),
+      },
+    } : {},
     history: {},
   });
 
@@ -166,6 +179,60 @@ export async function finishTask(sessionId: string, taskId: string): Promise<voi
       votes: votesWithNames,
       completedAt: Date.now(),
     },
+  });
+}
+
+export async function finishFreeRound(sessionId: string, taskId: string): Promise<void> {
+  const db = getDb();
+  const sessionRef = doc(db, 'sessions', sessionId);
+  const snap = await getDoc(sessionRef);
+  const session = snap.data() as Session;
+  const task = session.tasks[taskId];
+  const participants = session.participants;
+  const roundNumber = Object.keys(session.history ?? {}).length + 1;
+  const historyId = nanoid();
+  const finalAverage = calculateAverage(task.votes);
+
+  const votesWithNames: Record<string, { name: string; value: string }> = {};
+  Object.entries(task.votes).forEach(([uid, vote]) => {
+    votesWithNames[uid] = {
+      name: participants[uid]?.name ?? 'Desconhecido',
+      value: vote.value,
+    };
+  });
+
+  const newTaskId = nanoid();
+
+  await updateDoc(sessionRef, {
+    currentTaskId: newTaskId,
+    status: 'voting',
+    [`tasks.${newTaskId}`]: {
+      id: newTaskId,
+      title: '',
+      status: 'voting',
+      average: null,
+      votes: {},
+      createdAt: Date.now(),
+    },
+    [`history.${historyId}`]: {
+      id: historyId,
+      title: '',
+      roundNumber,
+      average: finalAverage,
+      votes: votesWithNames,
+      completedAt: Date.now(),
+    },
+  });
+}
+
+export async function clearVotes(sessionId: string, taskId: string): Promise<void> {
+  const db = getDb();
+  const sessionRef = doc(db, 'sessions', sessionId);
+  await updateDoc(sessionRef, {
+    status: 'voting',
+    [`tasks.${taskId}.votes`]: {},
+    [`tasks.${taskId}.status`]: 'voting',
+    [`tasks.${taskId}.average`]: null,
   });
 }
 
