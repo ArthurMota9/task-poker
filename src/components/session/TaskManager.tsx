@@ -44,7 +44,7 @@ export function TaskManager({ tasks, currentTaskId, isHost, onAddTask, onStartVo
       )}
 
       {pendingTasks.length === 0 && (
-        <p className="text-xs text-muted-foreground text-center py-3">
+        <p className="text-xs text-muted-foreground text-center">
           {isHost ? t('emptyHost') : t('emptyGuest')}
         </p>
       )}
