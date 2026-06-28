@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Task, Participant, VotingSequence } from '@/types';
 import { SEQUENCES } from '@/lib/sequences';
 import { calculateAverage } from '@/lib/sequences';
+import { useTimer } from '@/hooks/useTimer';
 import { cn } from '@/lib/utils';
 
 interface PipPanelProps {
@@ -17,7 +18,7 @@ interface PipPanelProps {
   totalVotes: number;
   totalParticipants: number;
   participants: Record<string, Participant>;
-  timerFormatted: string;
+  createdAt: number;
   onVote: (value: string) => void;
   onReveal: () => void;
   onClose: () => void;
@@ -32,11 +33,12 @@ function PipContent({
   totalVotes,
   totalParticipants,
   participants,
-  timerFormatted,
+  createdAt,
   onVote,
   onReveal,
   onClose,
 }: Omit<PipPanelProps, 'pipWindow'>) {
+  const { formatted: timerFormatted } = useTimer(createdAt);
   const t = useTranslations('session');
   const values = SEQUENCES[sequence];
   const average = task ? calculateAverage(task.votes) : null;
