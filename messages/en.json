@@ -1,5 +1,13 @@
 {
   "home": {
+    "headline": "Planning Poker for agile teams",
+    "tagline": "Estimate tasks in real-time with your team — free, no sign-up, no installation.",
+    "features": {
+      "free": "Free",
+      "noSignup": "No sign-up",
+      "realTime": "Real-time",
+      "multiLanguage": "Multi-language"
+    },
     "subtitle": "Planning poker for development teams",
     "create": {
       "title": "New session",

@@ -1,5 +1,13 @@
 {
   "home": {
+    "headline": "Planning Poker para times ágeis",
+    "tagline": "Estime tarefas em tempo real com seu time — gratuito, sem cadastro, sem instalação.",
+    "features": {
+      "free": "Gratuito",
+      "noSignup": "Sem cadastro",
+      "realTime": "Tempo real",
+      "multiLanguage": "Multi-idioma"
+    },
     "subtitle": "Planning poker para times de desenvolvimento",
     "create": {
       "title": "Nova sessão",

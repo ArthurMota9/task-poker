@@ -1,5 +1,13 @@
 {
   "home": {
+    "headline": "Planning Poker para equipos ágiles",
+    "tagline": "Estima tareas en tiempo real con tu equipo — gratis, sin registro, sin instalación.",
+    "features": {
+      "free": "Gratuito",
+      "noSignup": "Sin registro",
+      "realTime": "Tiempo real",
+      "multiLanguage": "Multiidioma"
+    },
     "subtitle": "Planning poker para equipos de desarrollo",
     "create": {
       "title": "Nueva sesión",

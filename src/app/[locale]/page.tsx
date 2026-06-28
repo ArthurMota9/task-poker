@@ -77,9 +77,26 @@ export default function HomePage() {
       </div>
 
       <div className="w-full max-w-3xl space-y-10">
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-5 text-center">
           <Logo size="md" />
-          <p className="text-muted-foreground text-sm">{t('subtitle')}</p>
+          <div className="space-y-2">
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+              {t('headline')}
+            </h1>
+            <p className="text-muted-foreground text-sm sm:text-base max-w-sm mx-auto leading-relaxed">
+              {t('tagline')}
+            </p>
+          </div>
+          <div className="flex gap-2 flex-wrap justify-center">
+            {(['free', 'noSignup', 'realTime', 'multiLanguage'] as const).map((key) => (
+              <span
+                key={key}
+                className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20"
+              >
+                {t(`features.${key}`)}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
