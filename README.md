@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Task Poker
 
-## Getting Started
+Planning poker para times de desenvolvimento. Estime story points em tempo real com sua equipe, sem precisar criar conta.
 
-First, run the development server:
+🔗 **https://task-poker-03c89dc46d91.herokuapp.com**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Sessões em tempo real** — votos sincronizados instantaneamente entre todos os participantes
+- **Sem cadastro** — autenticação anônima, basta entrar com um nome
+- **Sequências de votação** — Fibonacci, T-Shirt e Potências de 2
+- **Votos ocultos** — revelados apenas quando o host decidir; o time pode revotar após discussão
+- **Média ao vivo** — recalculada automaticamente a cada revoto
+- **Modo colaborativo** — opção para permitir que qualquer participante controle a sessão
+- **Histórico** — tarefas concluídas ficam registradas com média e votos individuais
+- **Picture-in-Picture** — vote enquanto navega em outras abas (Chrome 116+)
+- **Consenso** — confetes e mensagem surpresa quando o time todo vota igual na primeira revelação
+- **Internacionalização** — Português, Inglês e Espanhol
+- **Tema claro / escuro**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tecnologias
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| UI | React 19, Tailwind CSS v4, shadcn/ui |
+| Tempo real | Firebase Firestore |
+| Auth | Firebase Anonymous Authentication |
+| i18n | next-intl |
+| Tema | next-themes |
+| Deploy | Heroku |
