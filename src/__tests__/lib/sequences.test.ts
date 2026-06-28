@@ -3,34 +3,34 @@ import { calculateAverage, SEQUENCES, SEQUENCE_LABELS } from '@/lib/sequences';
 describe('calculateAverage', () => {
   it('returns the average of numeric votes', () => {
     const votes = {
-      u1: { value: '5', votedAt: 0 },
-      u2: { value: '8', votedAt: 0 },
-      u3: { value: '3', votedAt: 0 },
+      u1: { value: '5' },
+      u2: { value: '8' },
+      u3: { value: '3' },
     };
     expect(calculateAverage(votes)).toBe(5.3);
   });
 
   it('rounds to one decimal place', () => {
     const votes = {
-      u1: { value: '1', votedAt: 0 },
-      u2: { value: '2', votedAt: 0 },
+      u1: { value: '1' },
+      u2: { value: '2' },
     };
     expect(calculateAverage(votes)).toBe(1.5);
   });
 
   it('ignores non-numeric values like ? and ∞', () => {
     const votes = {
-      u1: { value: '8', votedAt: 0 },
-      u2: { value: '?', votedAt: 0 },
-      u3: { value: '∞', votedAt: 0 },
+      u1: { value: '8' },
+      u2: { value: '?' },
+      u3: { value: '∞' },
     };
     expect(calculateAverage(votes)).toBe(8);
   });
 
   it('returns null when all votes are non-numeric', () => {
     const votes = {
-      u1: { value: '?', votedAt: 0 },
-      u2: { value: '∞', votedAt: 0 },
+      u1: { value: '?' },
+      u2: { value: '∞' },
     };
     expect(calculateAverage(votes)).toBeNull();
   });
@@ -40,7 +40,7 @@ describe('calculateAverage', () => {
   });
 
   it('handles a single vote', () => {
-    expect(calculateAverage({ u1: { value: '13', votedAt: 0 } })).toBe(13);
+    expect(calculateAverage({ u1: { value: '13' } })).toBe(13);
   });
 });
 
