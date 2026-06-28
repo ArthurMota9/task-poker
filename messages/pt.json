@@ -1,0 +1,76 @@
+{
+  "home": {
+    "subtitle": "Planning poker para times de desenvolvimento",
+    "create": {
+      "title": "Nova sessão",
+      "description": "Crie e compartilhe com seu time",
+      "sessionName": "Nome da sessão",
+      "sessionNamePlaceholder": "Sprint 42 — Planning",
+      "yourName": "Seu nome",
+      "yourNamePlaceholder": "João Silva",
+      "sequence": "Sequência",
+      "anyoneCanControl": "Permitir que todos controlem a sessão",
+      "submit": "Criar sessão",
+      "submitting": "Criando..."
+    },
+    "join": {
+      "title": "Entrar em sessão",
+      "description": "Use o código compartilhado pelo host",
+      "sessionCode": "Código da sessão",
+      "sessionCodePlaceholder": "abc12345",
+      "yourName": "Seu nome",
+      "yourNamePlaceholder": "Maria Santos",
+      "submit": "Entrar na sessão",
+      "submitting": "Entrando..."
+    }
+  },
+  "session": {
+    "loading": "Carregando sessão...",
+    "notFound": "Sessão não encontrada",
+    "notFoundDescription": "Verifique o link ou crie uma nova sessão.",
+    "backHome": "Voltar ao início",
+    "joinDescription": "Informe seu nome para entrar na sessão",
+    "yourName": "Seu nome",
+    "yourNamePlaceholder": "João Silva",
+    "joinSubmit": "Entrar na sessão",
+    "joinSubmitting": "Entrando...",
+    "copyLink": "Copiar link",
+    "copied": "Copiado!",
+    "participants": "Participantes",
+    "votingNow": "Votando agora",
+    "untitled": "Sem título",
+    "revealed": "Revelado",
+    "votes": "{current} / {total} votos",
+    "chooseEstimate": "Escolha sua estimativa",
+    "revealVotes": "Revelar votos",
+    "finishTask": "Concluir tarefa",
+    "hostWaiting": "Adicione e selecione uma tarefa para iniciar a votação.",
+    "guestWaiting": "Aguardando o host iniciar a votação...",
+    "tasks": "Tarefas",
+    "history": "Histórico",
+    "pipOpen": "PiP",
+    "pipClose": "Fechar PiP"
+  },
+  "taskManager": {
+    "placeholder": "Nome da tarefa (opcional)...",
+    "add": "Adicionar",
+    "emptyHost": "Adicione tarefas acima para começar.",
+    "emptyGuest": "Aguardando tarefas...",
+    "untitled": "Sem título",
+    "voting": "Votando",
+    "vote": "Votar"
+  },
+  "participant": {
+    "you": "você",
+    "host": "Host"
+  },
+  "results": {
+    "average": "Média",
+    "times": "×"
+  },
+  "sequences": {
+    "fibonacci": "Fibonacci",
+    "tshirt": "T-Shirt",
+    "powers_of_2": "Potências de 2"
+  }
+}

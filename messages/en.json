@@ -1,0 +1,76 @@
+{
+  "home": {
+    "subtitle": "Planning poker for development teams",
+    "create": {
+      "title": "New session",
+      "description": "Create and share with your team",
+      "sessionName": "Session name",
+      "sessionNamePlaceholder": "Sprint 42 — Planning",
+      "yourName": "Your name",
+      "yourNamePlaceholder": "John Smith",
+      "sequence": "Sequence",
+      "anyoneCanControl": "Allow everyone to control the session",
+      "submit": "Create session",
+      "submitting": "Creating..."
+    },
+    "join": {
+      "title": "Join session",
+      "description": "Use the code shared by the host",
+      "sessionCode": "Session code",
+      "sessionCodePlaceholder": "abc12345",
+      "yourName": "Your name",
+      "yourNamePlaceholder": "Jane Smith",
+      "submit": "Join session",
+      "submitting": "Joining..."
+    }
+  },
+  "session": {
+    "loading": "Loading session...",
+    "notFound": "Session not found",
+    "notFoundDescription": "Check the link or create a new session.",
+    "backHome": "Back to home",
+    "joinDescription": "Enter your name to join the session",
+    "yourName": "Your name",
+    "yourNamePlaceholder": "John Smith",
+    "joinSubmit": "Join session",
+    "joinSubmitting": "Joining...",
+    "copyLink": "Copy link",
+    "copied": "Copied!",
+    "participants": "Participants",
+    "votingNow": "Voting now",
+    "untitled": "Untitled",
+    "revealed": "Revealed",
+    "votes": "{current} / {total} votes",
+    "chooseEstimate": "Choose your estimate",
+    "revealVotes": "Reveal votes",
+    "finishTask": "Finish task",
+    "hostWaiting": "Add and select a task to start voting.",
+    "guestWaiting": "Waiting for the host to start voting...",
+    "tasks": "Tasks",
+    "history": "History",
+    "pipOpen": "PiP",
+    "pipClose": "Close PiP"
+  },
+  "taskManager": {
+    "placeholder": "Task name (optional)...",
+    "add": "Add",
+    "emptyHost": "Add tasks above to get started.",
+    "emptyGuest": "Waiting for tasks...",
+    "untitled": "Untitled",
+    "voting": "Voting",
+    "vote": "Vote"
+  },
+  "participant": {
+    "you": "you",
+    "host": "Host"
+  },
+  "results": {
+    "average": "Average",
+    "times": "×"
+  },
+  "sequences": {
+    "fibonacci": "Fibonacci",
+    "tshirt": "T-Shirt",
+    "powers_of_2": "Powers of 2"
+  }
+}
