@@ -4,7 +4,7 @@ import { getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 
-const APP_URL = 'https://task-poker-03c89dc46d91.herokuapp.com';
+const APP_URL = 'https://task-poker.com';
 
 const LOCALE_META: Record<string, { title: string; description: string; ogLocale: string }> = {
   pt: {

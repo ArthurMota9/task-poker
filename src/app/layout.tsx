@@ -8,7 +8,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const APP_URL = 'https://task-poker-03c89dc46d91.herokuapp.com';
+const APP_URL = 'https://task-poker.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),

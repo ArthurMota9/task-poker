@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const APP_URL = 'https://task-poker-03c89dc46d91.herokuapp.com';
+const APP_URL = 'https://task-poker.com';
 
 export default function robots(): MetadataRoute.Robots {
   return {
