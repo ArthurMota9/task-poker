@@ -65,6 +65,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: [{ url: '/icon', type: 'image/png', sizes: '32x32' }],
+    shortcut: '/icon',
+    apple: '/icon',
+  },
   alternates: {
     canonical: APP_URL,
     languages: {
