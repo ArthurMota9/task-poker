@@ -70,12 +70,13 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="absolute top-4 right-4 flex items-center gap-2">
+    <main className="min-h-screen bg-background flex flex-col">
+      <div className="flex justify-end items-center gap-2 px-4 py-3">
         <LanguageSwitcher />
         <ThemeToggle />
       </div>
 
+      <div className="flex-1 flex items-center justify-center p-4">
       <div className="w-full max-w-3xl space-y-10">
         <div className="flex flex-col items-center gap-5 text-center">
           <Logo size="md" />
@@ -213,6 +214,7 @@ export default function HomePage() {
             </CardContent>
           </Card>
         </div>
+      </div>
       </div>
     </main>
   );
