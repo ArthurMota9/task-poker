@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
+    "@ducanh2912/next-pwa": "^10.2.9",
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
