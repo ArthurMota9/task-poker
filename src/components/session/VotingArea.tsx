@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { Session, Task, Participant } from '@/types';
-import { revealVotes, finishTask, finishFreeRound, clearVotes } from '@/lib/session';
+import { revealVotes, finishTask, finishFreeRound } from '@/lib/session';
 import { VotingCards } from '@/components/session/VotingCards';
 import { VoteResults } from '@/components/session/VoteResults';
 import { Button } from '@/components/ui/button';
@@ -46,18 +46,19 @@ interface VotingAreaProps {
   totalParticipants: number;
   myVote: string | null;
   onVote: (value: string) => void;
+  onClearVotes?: () => void;
 }
 
 export function VotingArea({
   sessionId,
   session,
   currentTask,
-  userId,
   canControl,
   participants,
   totalParticipants,
   myVote,
   onVote,
+  onClearVotes = () => {},
 }: VotingAreaProps) {
   const t = useTranslations('session');
   const locale = useLocale();
@@ -149,6 +150,7 @@ export function VotingArea({
               )}
               <VotingCards
                 sequence={session.votingSequence}
+                customSequence={session.customSequence}
                 selectedValue={myVote}
                 onVote={onVote}
                 disabled={false}
@@ -164,7 +166,7 @@ export function VotingArea({
                 </Button>
               )}
               {canControl && (
-                <Button size="sm" variant="outline" onClick={() => clearVotes(sessionId, currentTask.id)}>
+                <Button size="sm" variant="outline" onClick={onClearVotes}>
                   {t('clearVotes')}
                 </Button>
               )}

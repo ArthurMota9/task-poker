@@ -26,6 +26,7 @@ export async function createSession(
   votingSequence: VotingSequence,
   anyoneCanControl = false,
   freeMode = false,
+  customSequence?: string[],
 ): Promise<string> {
   const db = getDb();
   const userId = await getOrCreateAnonymousUser();
@@ -39,6 +40,7 @@ export async function createSession(
     hostId: userId,
     status: freeMode ? 'voting' : 'waiting',
     votingSequence,
+    ...(votingSequence === 'custom' && customSequence ? { customSequence } : {}),
     anyoneCanControl,
     freeMode,
     currentTaskId: initialTaskId,

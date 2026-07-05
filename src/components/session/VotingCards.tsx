@@ -6,13 +6,14 @@ import { cn } from '@/lib/utils';
 
 interface VotingCardsProps {
   sequence: VotingSequence;
+  customSequence?: string[];
   selectedValue: string | null;
   onVote: (value: string) => void;
   disabled?: boolean;
 }
 
-export function VotingCards({ sequence, selectedValue, onVote, disabled }: VotingCardsProps) {
-  const values = SEQUENCES[sequence];
+export function VotingCards({ sequence, customSequence, selectedValue, onVote, disabled }: VotingCardsProps) {
+  const values = sequence === 'custom' ? (customSequence ?? []) : SEQUENCES[sequence];
 
   return (
     <div className="flex flex-wrap justify-center gap-2">

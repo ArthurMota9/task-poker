@@ -19,6 +19,7 @@ const mockFinishFreeRound = finishFreeRound as jest.Mock;
 const mockClearVotes = clearVotes as jest.Mock;
 
 const onVote = jest.fn();
+const onClearVotes = jest.fn();
 
 const participants: Record<string, Participant> = {
   'user-1': { id: 'user-1', name: 'Alice', isHost: true, joinedAt: 0 },
@@ -58,6 +59,7 @@ const defaultProps = {
   totalParticipants: 1,
   myVote: null,
   onVote,
+  onClearVotes,
 };
 
 beforeEach(() => {
@@ -126,11 +128,11 @@ describe('VotingArea', () => {
     expect(screen.getByRole('button', { name: 'clearVotes' })).toBeInTheDocument();
   });
 
-  it('calls clearVotes on button click', async () => {
+  it('calls onClearVotes on button click', async () => {
     const user = userEvent.setup();
     render(<VotingArea {...defaultProps} />);
     await user.click(screen.getByRole('button', { name: 'clearVotes' }));
-    expect(mockClearVotes).toHaveBeenCalledWith('sess-1', 'task-1');
+    expect(onClearVotes).toHaveBeenCalled();
   });
 
   it('shows finishTask when revealed, canControl and not freeMode', () => {

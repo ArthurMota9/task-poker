@@ -40,7 +40,7 @@ export function ParticipantList({ participants, currentTask, revealed, currentUs
             {isVotingOrRevealed && (
               <div
                 className={cn(
-                  'shrink-0 w-5 h-7 rounded border-2 flex items-center justify-center text-[10px] font-semibold transition-all duration-300 tabular-nums',
+                  'shrink-0 min-w-5 h-7 px-1 rounded border-2 flex items-center justify-center text-[10px] font-semibold transition-all duration-300 tabular-nums',
                   revealed && hasVoted
                     ? 'border-primary bg-primary/10 text-primary'
                     : hasVoted

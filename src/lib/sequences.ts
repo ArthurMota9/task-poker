@@ -4,12 +4,14 @@ export const SEQUENCES: Record<VotingSequence, string[]> = {
   fibonacci: ['0', '1', '2', '3', '5', '8', '13', '21', '34', '?', '∞'],
   tshirt: ['XS', 'S', 'M', 'L', 'XL', 'XXL', '?'],
   powers_of_2: ['1', '2', '4', '8', '16', '32', '64', '?', '∞'],
+  custom: [],
 };
 
 export const SEQUENCE_LABELS: Record<VotingSequence, string> = {
   fibonacci: 'Fibonacci',
   tshirt: 'T-Shirt',
   powers_of_2: 'Potências de 2',
+  custom: 'Personalizado',
 };
 
 export function calculateAverage(votes: Record<string, { value: string }>): number | null {

@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { createSession, joinSession } from '@/lib/session';
 import { VotingSequence } from '@/types';
+import { SEQUENCES } from '@/lib/sequences';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -15,6 +16,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { Logo } from '@/components/Logo';
+import { CustomSequenceEditor } from '@/components/home/CustomSequenceEditor';
 
 export default function HomePage() {
   const t = useTranslations('home');
@@ -27,6 +29,7 @@ export default function HomePage() {
     fibonacci: tSeq('fibonacci'),
     tshirt: tSeq('tshirt'),
     powers_of_2: tSeq('powers_of_2'),
+    custom: tSeq('custom'),
   };
 
   const [createForm, setCreateForm] = useState({
@@ -37,6 +40,8 @@ export default function HomePage() {
     freeMode: false,
   });
 
+  const [customValues, setCustomValues] = useState<string[]>([...SEQUENCES.fibonacci]);
+
   const [joinForm, setJoinForm] = useState({
     sessionCode: '',
     participantName: '',
@@ -45,9 +50,17 @@ export default function HomePage() {
   async function handleCreate(e: React.FormEvent) {
     e.preventDefault();
     if (!createForm.sessionName.trim() || !createForm.hostName.trim()) return;
+    if (createForm.sequence === 'custom' && customValues.length === 0) return;
     setLoading(true);
     try {
-      const sessionId = await createSession(createForm.sessionName, createForm.hostName, createForm.sequence, createForm.anyoneCanControl, createForm.freeMode);
+      const sessionId = await createSession(
+        createForm.sessionName,
+        createForm.hostName,
+        createForm.sequence,
+        createForm.anyoneCanControl,
+        createForm.freeMode,
+        createForm.sequence === 'custom' ? customValues : undefined,
+      );
       router.push(`/${locale}/session/${sessionId}`);
     } catch (err) {
       console.error(err);
@@ -145,6 +158,11 @@ export default function HomePage() {
                     ))}
                   </div>
                 </div>
+
+                {createForm.sequence === 'custom' && (
+                  <CustomSequenceEditor values={customValues} onChange={setCustomValues} />
+                )}
+
                 <div className="flex items-center gap-2.5">
                   <Switch
                     id="anyoneCanControl"
@@ -169,7 +187,7 @@ export default function HomePage() {
                 <Button
                   type="submit"
                   className="w-full mt-1"
-                  disabled={loading || !createForm.sessionName.trim() || !createForm.hostName.trim()}
+                  disabled={loading || !createForm.sessionName.trim() || !createForm.hostName.trim() || (createForm.sequence === 'custom' && customValues.length === 0)}
                 >
                   {loading ? t('create.submitting') : t('create.submit')}
                 </Button>

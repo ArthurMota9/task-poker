@@ -2,11 +2,11 @@
 
 export const dynamic = 'force-dynamic';
 
-import { use, useState, useCallback, useEffect } from 'react';
+import { use, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSession } from '@/hooks/useSession';
 import { usePictureInPicture } from '@/hooks/usePictureInPicture';
-import { castVote, addTask, startVoting, revealVotes } from '@/lib/session';
+import { castVote, clearVotes, addTask, startVoting, revealVotes } from '@/lib/session';
 import { ParticipantList } from '@/components/session/ParticipantList';
 import { TaskManager } from '@/components/session/TaskManager';
 import { SessionHistory } from '@/components/session/SessionHistory';
@@ -27,8 +27,6 @@ export default function SessionPage({ params }: PageProps) {
   const t = useTranslations('session');
   const { session, userId, loading, isHost } = useSession(id);
   const { pipWindow, isSupported: pipSupported, isOpen: pipOpen, openPip, closePip } = usePictureInPicture();
-  const [myVote, setMyVote] = useState<string | null>(null);
-
   const currentTask = session?.currentTaskId ? session.tasks[session.currentTaskId] : null;
   const isRevealed = session?.status === 'revealed';
   const isParticipant = !!(userId && session?.participants?.[userId]?.name);
@@ -38,16 +36,24 @@ export default function SessionPage({ params }: PageProps) {
   const tasks = session?.tasks ?? {};
   const totalParticipants = Object.keys(participants).length;
   const totalVotes = currentTask ? Object.keys(currentTask.votes).length : 0;
-
-  useEffect(() => {
+  const [myVote, setMyVote] = useState<string | null>(null);
+  const [prevTaskId, setPrevTaskId] = useState(session?.currentTaskId);
+  if (prevTaskId !== session?.currentTaskId) {
+    setPrevTaskId(session?.currentTaskId);
     setMyVote(null);
-  }, [session?.currentTaskId]);
+  }
 
-  const handleVote = useCallback(async (value: string) => {
+  async function handleVote(value: string) {
     if (!userId || !session?.currentTaskId) return;
     setMyVote(value);
     await castVote(id, session.currentTaskId, userId, value);
-  }, [id, userId, session?.currentTaskId]);
+  }
+
+  async function handleClearVotes() {
+    if (!session?.currentTaskId) return;
+    setMyVote(null);
+    await clearVotes(id, session.currentTaskId);
+  }
 
   if (loading) {
     return (
@@ -142,6 +148,7 @@ export default function SessionPage({ params }: PageProps) {
             totalParticipants={totalParticipants}
             myVote={myVote}
             onVote={handleVote}
+            onClearVotes={handleClearVotes}
           />
 
           {!session.freeMode && (

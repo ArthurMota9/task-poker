@@ -19,6 +19,10 @@
       "sequence": "Sequência",
       "anyoneCanControl": "Permitir que todos controlem a sessão",
       "freeMode": "Modo livre (sem cadastro de tarefas)",
+      "customHint": "Arraste para reordenar. Inicia com os valores Fibonacci.",
+      "customPlaceholder": "Novo valor...",
+      "customAdd": "Adicionar",
+      "customEmpty": "Nenhum valor adicionado.",
       "submit": "Criar sessão",
       "submitting": "Criando..."
     },
@@ -83,6 +87,7 @@
   "sequences": {
     "fibonacci": "Fibonacci",
     "tshirt": "T-Shirt",
-    "powers_of_2": "Potências de 2"
+    "powers_of_2": "Potências de 2",
+    "custom": "Personalizado"
   }
 }

@@ -1,4 +1,4 @@
-export type VotingSequence = 'fibonacci' | 'tshirt' | 'powers_of_2';
+export type VotingSequence = 'fibonacci' | 'tshirt' | 'powers_of_2' | 'custom';
 
 export type SessionStatus = 'waiting' | 'voting' | 'revealed';
 
@@ -40,6 +40,7 @@ export interface Session {
   hostId: string;
   status: SessionStatus;
   votingSequence: VotingSequence;
+  customSequence?: string[];
   anyoneCanControl: boolean;
   freeMode: boolean;
   currentTaskId: string | null;
