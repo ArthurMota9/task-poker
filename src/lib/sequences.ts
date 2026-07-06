@@ -16,9 +16,9 @@ export const SEQUENCE_LABELS: Record<VotingSequence, string> = {
 
 export function calculateAverage(votes: Record<string, { value: string }>): number | null {
   const numeric = Object.values(votes)
-    .map((v) => parseFloat(v.value))
+    .map((v) => parseFloat(v.value.replace(',', '.')))
     .filter((n) => !isNaN(n));
 
   if (numeric.length === 0) return null;
-  return Math.round((numeric.reduce((a, b) => a + b, 0) / numeric.length) * 10) / 10;
+  return Math.round((numeric.reduce((a, b) => a + b, 0) / numeric.length) * 100) / 100;
 }

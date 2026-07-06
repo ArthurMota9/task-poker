@@ -7,15 +7,23 @@ describe('calculateAverage', () => {
       u2: { value: '8' },
       u3: { value: '3' },
     };
-    expect(calculateAverage(votes)).toBe(5.3);
+    expect(calculateAverage(votes)).toBe(5.33);
   });
 
-  it('rounds to one decimal place', () => {
+  it('rounds to two decimal places', () => {
     const votes = {
       u1: { value: '1' },
       u2: { value: '2' },
     };
     expect(calculateAverage(votes)).toBe(1.5);
+  });
+
+  it('handles comma as decimal separator', () => {
+    const votes = {
+      u1: { value: '0,5' },
+      u2: { value: '1' },
+    };
+    expect(calculateAverage(votes)).toBe(0.75);
   });
 
   it('ignores non-numeric values like ? and ∞', () => {
