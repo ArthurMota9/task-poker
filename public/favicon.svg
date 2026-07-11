@@ -1,5 +1,7 @@
 <svg width="32" height="32" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="5" width="16" height="21" rx="3" fill="#4f46e5" fill-opacity="0.35"/>
-  <rect x="4" y="3" width="16" height="21" rx="3" fill="#4f46e5"/>
-  <path d="M12 15 L15 10 L18 15 L15 20 Z" fill="white" fill-opacity="0.9"/>
+  <rect x="7" y="5" width="16" height="21" rx="3.5" fill="#005e31" fill-opacity="0.4"/>
+  <rect x="4" y="3" width="16" height="21" rx="3.5" fill="#fffcf3" stroke="#005e31" stroke-width="1"/>
+  <text x="6.4" y="9.6" font-size="4.6" font-weight="700" font-family="ui-monospace, monospace" fill="#141207">T</text>
+  <path d="M12 9.8c1.9 1.6 3.4 2.9 3.4 4.6a2 2 0 0 1-3.4 1.4 2 2 0 0 1-3.4-1.4c0-1.7 1.5-3 3.4-4.6Z" fill="#be2e31"/>
+  <path d="M11 15.6h2v3.6h-2z" fill="#be2e31"/>
 </svg>

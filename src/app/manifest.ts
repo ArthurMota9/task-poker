@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Planning Poker online para times ágeis',
     start_url: '/pt',
     display: 'standalone',
-    background_color: '#ffffff',
-    theme_color: '#4f46e5',
+    background_color: '#e6f2e9',
+    theme_color: '#005e31',
     orientation: 'portrait',
     icons: [
       {

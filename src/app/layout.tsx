@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     alternateLocale: ['en_US', 'es_ES'],
     images: [
       {
-        url: '/opengraph-image',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Task Poker — Planning Poker online',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Task Poker — Planning Poker online',
     description: 'Estime tarefas em tempo real com seu time. Gratuito e sem cadastro.',
-    images: ['/opengraph-image'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
