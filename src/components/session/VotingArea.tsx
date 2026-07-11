@@ -83,6 +83,9 @@ export function VotingArea({
     const messages = CONSENSUS_MESSAGES[locale] ?? CONSENSUS_MESSAGES.en;
     const seed = currentTask.id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
     const message = messages[seed % messages.length];
+    // Triggered by the reveal event, not derived from props/state — this is
+    // the one-off celebration side effect itself, not a state sync.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setConsensusMessage(message);
     setTimeout(() => setConsensusMessage(null), 5000);
 

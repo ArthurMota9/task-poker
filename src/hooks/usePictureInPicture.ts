@@ -7,6 +7,9 @@ export function usePictureInPicture() {
   const [isSupported, setIsSupported] = useState(false);
 
   useEffect(() => {
+    // Feature detection must run client-side only, after mount, to avoid an
+    // SSR/hydration mismatch (the API doesn't exist on the server).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsSupported(!!window.documentPictureInPicture);
   }, []);
 
@@ -15,6 +18,9 @@ export function usePictureInPicture() {
     if (!pipWindow) return;
 
     const syncTheme = () => {
+      // pipWindow is a reference to an external browser window, not React
+      // state data — writing to its DOM is not a state mutation.
+      // eslint-disable-next-line react-hooks/immutability
       pipWindow.document.documentElement.className =
         document.documentElement.className;
     };
