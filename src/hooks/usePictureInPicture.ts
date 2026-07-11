@@ -52,7 +52,7 @@ export function usePictureInPicture() {
     const themeStyle = pip.document.createElement('style');
     themeStyle.textContent = `
       * { box-sizing: border-box; }
-      html, body { margin: 0; min-height: 100%; background: var(--background); font-family: var(--font-inter, ui-sans-serif, system-ui, sans-serif); }
+      html, body { margin: 0; min-height: 100%; background: var(--background); font-family: var(--font-plex-sans, ui-sans-serif, system-ui, sans-serif); }
     `;
     pip.document.head.appendChild(themeStyle);
 

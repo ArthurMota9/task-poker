@@ -13,6 +13,7 @@ interface PipPanelProps {
   task: Task | null;
   sessionName: string;
   sequence: VotingSequence;
+  customSequence?: string[];
   selectedVote: string | null;
   revealed: boolean;
   totalVotes: number;
@@ -28,6 +29,7 @@ function PipContent({
   task,
   sessionName,
   sequence,
+  customSequence,
   selectedVote,
   revealed,
   totalVotes,
@@ -40,7 +42,7 @@ function PipContent({
 }: Omit<PipPanelProps, 'pipWindow'>) {
   const { formatted: timerFormatted } = useTimer(createdAt);
   const t = useTranslations('session');
-  const values = SEQUENCES[sequence];
+  const values = sequence === 'custom' ? (customSequence ?? []) : SEQUENCES[sequence];
   const average = task ? calculateAverage(task.votes) : null;
 
   return (
@@ -96,20 +98,25 @@ function PipContent({
       {task && (
         <div className="flex flex-col gap-1.5">
           <div className="flex flex-wrap justify-center gap-1">
-            {values.map((value) => (
-              <button
-                key={value}
-                onClick={() => onVote(value)}
-                className={cn(
-                  'w-8 h-10 rounded-md border-2 text-xs font-semibold transition-all duration-150 select-none flex items-center justify-center',
-                  selectedVote === value
-                    ? 'border-primary bg-primary text-primary-foreground scale-105'
-                    : 'border-border bg-card text-foreground hover:border-primary/50 hover:bg-accent'
-                )}
-              >
-                {value}
-              </button>
-            ))}
+            {values.map((value, i) => {
+              const isRed = i % 4 === 1 || i % 4 === 2;
+              return (
+                <button
+                  key={value}
+                  onClick={() => onVote(value)}
+                  className={cn(
+                    'w-8 h-10 rounded-md border font-heading font-semibold transition-all duration-150 select-none flex items-center justify-center bg-card-stock',
+                    value.length > 2 ? 'text-[10px]' : 'text-sm',
+                    isRed ? 'text-suit-red' : 'text-suit-black',
+                    selectedVote === value
+                      ? '-translate-y-1 border-primary ring-1 ring-primary/50 shadow'
+                      : 'border-card-stock-foreground/15 hover:border-primary/40'
+                  )}
+                >
+                  {value}
+                </button>
+              );
+            })}
           </div>
           {!revealed && (
             <button

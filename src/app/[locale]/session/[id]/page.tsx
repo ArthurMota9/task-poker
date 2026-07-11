@@ -93,6 +93,7 @@ export default function SessionPage({ params }: PageProps) {
           task={currentTask}
           sessionName={session.name}
           sequence={session.votingSequence}
+          customSequence={session.customSequence}
           selectedVote={myVote}
           revealed={isRevealed}
           totalVotes={totalVotes}
