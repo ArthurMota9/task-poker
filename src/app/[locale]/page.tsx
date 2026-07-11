@@ -15,6 +15,7 @@ import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { GithubStarButton } from '@/components/GithubStarButton';
 import { Logo } from '@/components/Logo';
 import { CustomSequenceEditor } from '@/components/home/CustomSequenceEditor';
 
@@ -84,9 +85,12 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-background flex flex-col">
-      <div className="flex justify-end items-center gap-2 px-4 py-3">
-        <LanguageSwitcher />
-        <ThemeToggle />
+      <div className="flex justify-between items-center gap-2 px-4 py-3">
+        <GithubStarButton />
+        <div className="flex items-center gap-2">
+          <LanguageSwitcher />
+          <ThemeToggle />
+        </div>
       </div>
 
       <div className="flex-1 flex items-center justify-center p-4">

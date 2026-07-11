@@ -35,7 +35,8 @@
       "yourNamePlaceholder": "María García",
       "submit": "Unirse a la sesión",
       "submitting": "Uniéndose..."
-    }
+    },
+    "starOnGithub": "Marcar con estrella en GitHub"
   },
   "session": {
     "loading": "Cargando sesión...",
