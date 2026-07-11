@@ -1,12 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
-const inter = Inter({
-  variable: "--font-inter",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
+  axes: ["opsz", "SOFT", "WONK"],
+});
+
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const APP_URL = 'https://task-poker.com';
@@ -87,7 +100,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
+    <html
+      lang="pt-BR"
+      className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>{children}</ThemeProvider>
         <ServiceWorkerRegister />

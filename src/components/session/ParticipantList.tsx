@@ -44,7 +44,7 @@ export function ParticipantList({ participants, currentTask, revealed, currentUs
                   revealed && hasVoted
                     ? 'border-primary bg-primary/10 text-primary'
                     : hasVoted
-                    ? 'border-green-500 bg-green-500 text-white'
+                    ? 'border-primary bg-primary text-primary-foreground'
                     : 'border-dashed border-border bg-muted text-transparent'
                 )}
               >

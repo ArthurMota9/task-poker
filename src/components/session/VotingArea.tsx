@@ -93,7 +93,7 @@ export function VotingArea({
           spread: 55,
           particleCount: 80,
           origin,
-          colors: ['#4f46e5', '#818cf8', '#c7d2fe', '#facc15', '#fb923c'],
+          colors: ['#a9812e', '#d9b866', '#8a3226', '#f1ead8', '#3f5c4a'],
         });
       };
       shoot(60, { x: 0, y: 0.65 });
@@ -148,13 +148,15 @@ export function VotingArea({
               {!isRevealed && (
                 <p className="text-xs text-center text-muted-foreground">{t('chooseEstimate')}</p>
               )}
-              <VotingCards
-                sequence={session.votingSequence}
-                customSequence={session.customSequence}
-                selectedValue={myVote}
-                onVote={onVote}
-                disabled={false}
-              />
+              <div className="rounded-xl bg-background px-3 py-7 ring-1 ring-inset ring-foreground/10 sm:px-6">
+                <VotingCards
+                  sequence={session.votingSequence}
+                  customSequence={session.customSequence}
+                  selectedValue={myVote}
+                  onVote={onVote}
+                  disabled={false}
+                />
+              </div>
             </div>
 
             <Separator />

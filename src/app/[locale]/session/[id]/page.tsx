@@ -2,7 +2,7 @@
 
 export const dynamic = 'force-dynamic';
 
-import { use, useState } from 'react';
+import { use } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSession } from '@/hooks/useSession';
 import { usePictureInPicture } from '@/hooks/usePictureInPicture';
@@ -36,22 +36,17 @@ export default function SessionPage({ params }: PageProps) {
   const tasks = session?.tasks ?? {};
   const totalParticipants = Object.keys(participants).length;
   const totalVotes = currentTask ? Object.keys(currentTask.votes).length : 0;
-  const [myVote, setMyVote] = useState<string | null>(null);
-  const [prevTaskId, setPrevTaskId] = useState(session?.currentTaskId);
-  if (prevTaskId !== session?.currentTaskId) {
-    setPrevTaskId(session?.currentTaskId);
-    setMyVote(null);
-  }
+  // Derived from Firestore rather than local state, so a "clear votes" from
+  // any participant reflects immediately on every board, not just the caller's.
+  const myVote = userId && currentTask ? (currentTask.votes[userId]?.value ?? null) : null;
 
   async function handleVote(value: string) {
     if (!userId || !session?.currentTaskId) return;
-    setMyVote(value);
     await castVote(id, session.currentTaskId, userId, value);
   }
 
   async function handleClearVotes() {
     if (!session?.currentTaskId) return;
-    setMyVote(null);
     await clearVotes(id, session.currentTaskId);
   }
 

@@ -30,7 +30,8 @@ describe('VotingCards', () => {
   it('applies selected styles to the chosen card', () => {
     render(<VotingCards sequence="fibonacci" selectedValue="5" onVote={onVote} />);
     const selectedButton = screen.getByRole('button', { name: '5' });
-    expect(selectedButton).toHaveClass('scale-105');
+    expect(selectedButton).toHaveAttribute('aria-pressed', 'true');
+    expect(selectedButton).toHaveClass('border-primary');
   });
 
   it('does not call onVote when disabled', async () => {

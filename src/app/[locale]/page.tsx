@@ -91,26 +91,24 @@ export default function HomePage() {
 
       <div className="flex-1 flex items-center justify-center p-4">
       <div className="w-full max-w-3xl space-y-10">
-        <div className="flex flex-col items-center gap-5 text-center">
+        <div className="flex flex-col items-center gap-6 text-center">
           <Logo size="md" />
-          <div className="space-y-2">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+          <div className="space-y-3">
+            <h1 className="font-heading text-4xl sm:text-5xl font-semibold tracking-tight text-foreground text-balance">
               {t('headline')}
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base max-w-sm mx-auto leading-relaxed">
               {t('tagline')}
             </p>
           </div>
-          <div className="flex gap-2 flex-wrap justify-center">
-            {(['free', 'noSignup', 'realTime', 'multiLanguage'] as const).map((key) => (
-              <span
-                key={key}
-                className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20"
-              >
+          <p className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-xs text-muted-foreground">
+            {(['free', 'noSignup', 'realTime', 'multiLanguage'] as const).map((key, i) => (
+              <span key={key} className="inline-flex items-center gap-2.5">
+                {i > 0 && <span aria-hidden="true" className="text-border">·</span>}
                 {t(`features.${key}`)}
               </span>
             ))}
-          </div>
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
